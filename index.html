@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev project</title>
+  </head>
+
+  <script>
+    function magicbox() {
+      let myTextbox = document.createElement("input");
+      myTextbox.type = "text";
+      myTextbox.id = "first";
+      document.body.appendChild(myTextbox);
+      myTextbox.focus();
+      document.body.appendChild(document.createElement("br"));
+      document.body.appendChild(document.createElement("br"));
+      let myButton = document.createElement("input");
+      myButton.type = "button";
+      myButton.id = "go";
+      myButton.value = "Go";
+      document.body.appendChild(myButton);
+      document.body.appendChild(document.createElement("br"));
+      document.body.appendChild(document.createElement("br"));
+
+
+      myButton.onclick = project;
+      alienTimer = null;
+      stepNumber = 0;
+      alien = document.getElementById("a");
+
+      function project() {
+        if (myTextbox.value.toLowerCase() == "storage") {
+          var settag = document.createElement("a");
+          var linktext = document.createTextNode("storage.html");
+          settag.setAttribute("href", "storage.html");
+          settag.appendChild(linktext);
+          document.body.appendChild(settag);
+        } else if (myTextbox.value.toLowerCase() == "alien") {
+          var alien = document.createElement("img");
+          alien.src = "alien/alienrwalk0.gif";
+          alien.style.width = "150px";
+          alien.style.position = "absolute";
+          alien.style.top = "150px";
+          document.body.appendChild(alien);
+        } else if (myTextbox.value.toLowerCase() == "walk") {
+          var alien = document.createElement("img");
+          alien.id = "a";
+          alien.src = "alien/alienrwalk0.gif";
+          alien.style.width = "150px";
+          alien.style.position = "absolute";
+          alien.style.top = "150px";
+          alien.style.left = "100px";
+          document.body.appendChild(alien);
+          AlienGoRight();
+          
+          function takeRStep() {
+            stepNumber++;
+            if (stepNumber >= 30) {
+              stepNumber = 0;
+            }
+            alien.src = "alien/alienrwalk" + stepNumber + ".gif";
+          }
+          function takeLStep() {
+            stepNumber++;
+            if (stepNumber >= 30) {
+              stepNumber = 0;
+            }
+            alien.src = "alien/alienlwalk" + stepNumber + ".gif";
+          }
+
+          function AlienGoRight() {
+            clearInterval(alienTimer);
+            alienTimer = setInterval(function () {
+              takeRStep();
+
+              alien.style.left = parseInt(alien.style.left) + 1 + "px";
+            }, 100);
+          }
+        }
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      }
+
+      
+    }
+
+    onload = magicbox;
+  </script>
+
+  <body></body>
+</html>
