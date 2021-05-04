@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dev project</title>
   </head>
-
+  <script src="jquery-3.6.0.min.js"></script>
   <script>
     function magicbox() {
       // create an input box//
@@ -142,17 +142,52 @@
             }
           }
         }
+        //alien stop moving//
         else if (myTextbox.value.toLowerCase() == "stop") {
           clearInterval(alienTimer);
         }
+        //alien dispear//
         else if (myTextbox.value.toLowerCase() == "bye") {
           clearInterval(alienTimer);
           alien = document.getElementById("a");
           alien.style.display= "none"
         }
+        else if (myTextbox.value.toLowerCase() == "jquery"){
+          var bird = document.createElement("img");
+          bird.id = "b";
+          bird.src = "picture/bird.jpg";
+          bird.style.top = "150px";
+          document.body.appendChild(bird);
+          var dog = document.createElement("img");
+          dog.id = "d";
+          dog.src = "picture/dog.jpg";
+          dog.style.top = "150px";
+          document.body.appendChild(dog);
+          var fish = document.createElement("img");
+          fish.id = "f";
+          fish.src = "picture/fish.jpg";
+          fish.style.top = "150px";
+          document.body.appendChild(fish);
+          var turtle = document.createElement("img");
+          turtle.id = "t";
+          turtle.src = "picture/turtle.jpg";
+          turtle.style.top = "150px";
+          document.body.appendChild(turtle);
+          $(function(){   
+                $("img").attr("width", 200)
+
+            });
+            $(function(){
+              $("img:eq(1)").click(function(){
+                    $(this).css("border", "15px solid red   ")
+            });
+          });
+
+
+        }
       }
     }
-
+    
     onload = magicbox;
   </script>
 
