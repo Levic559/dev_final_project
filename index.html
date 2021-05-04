@@ -9,6 +9,7 @@
 
   <script>
     function magicbox() {
+      // create an input box//
       let myTextbox = document.createElement("input");
       myTextbox.type = "text";
       myTextbox.id = "first";
@@ -16,6 +17,7 @@
       myTextbox.focus();
       document.body.appendChild(document.createElement("br"));
       document.body.appendChild(document.createElement("br"));
+      // create a button//
       let myButton = document.createElement("input");
       myButton.type = "button";
       myButton.id = "go";
@@ -24,37 +26,53 @@
       document.body.appendChild(document.createElement("br"));
       document.body.appendChild(document.createElement("br"));
 
-
       myButton.onclick = project;
       alienTimer = null;
       stepNumber = 0;
       alien = document.getElementById("a");
-
+      // set conditions to trigger the function//
       function project() {
+        // show the link of storage//
         if (myTextbox.value.toLowerCase() == "storage") {
           var settag = document.createElement("a");
           var linktext = document.createTextNode("storage.html");
           settag.setAttribute("href", "storage.html");
           settag.appendChild(linktext);
           document.body.appendChild(settag);
+          // show a stative alien//
         } else if (myTextbox.value.toLowerCase() == "alien") {
-          var alien = document.createElement("img");
-          alien.src = "alien/alienrwalk0.gif";
-          alien.style.width = "150px";
-          alien.style.position = "absolute";
-          alien.style.top = "150px";
-          document.body.appendChild(alien);
-        } else if (myTextbox.value.toLowerCase() == "walk") {
           var alien = document.createElement("img");
           alien.id = "a";
           alien.src = "alien/alienrwalk0.gif";
           alien.style.width = "150px";
           alien.style.position = "absolute";
           alien.style.top = "150px";
-          alien.style.left = "100px";
+          alien.style.left = "50px";
           document.body.appendChild(alien);
+          // show a walked alien//
+        } else if (myTextbox.value.toLowerCase() == "walk") {
+          alien = document.getElementById("a");
           AlienGoRight();
-          
+          dis_Measure();
+           // AlienMoveRight//
+           function AlienGoRight() {
+            clearInterval(alienTimer);
+            alienTimer = setInterval(function () {
+              takeRStep();
+              dis_Measure();
+              alien.style.left = parseInt(alien.style.left) + 1 + "px";
+            }, 100);
+          }
+          // AlienMoveLeft//
+          function AlienGoLeft() {
+            clearInterval(alienTimer);
+            alienTimer = setInterval(function () {
+              takeLStep();
+              dis_Measure();
+              alien.style.left = parseInt(alien.style.left) - 1 + "px";
+            }, 100);
+          }
+          // show moviing step start//
           function takeRStep() {
             stepNumber++;
             if (stepNumber >= 30) {
@@ -69,40 +87,70 @@
             }
             alien.src = "alien/alienlwalk" + stepNumber + ".gif";
           }
-
-          function AlienGoRight() {
+          //check the distance between alien with wall//
+          function dis_Measure() {
+            if (alien.style.left === "0px") {
+              AlienGoRight();
+            } else if (alien.style.left === "1200px") {
+              AlienGoLeft();
+            }
+          }
+        }
+        else if (myTextbox.value.toLowerCase() == "run") {
+          alien = document.getElementById("a");
+          AlienGoRight();
+          dis_Measure();
+           // AlienMoveRight//
+           function AlienGoRight() {
             clearInterval(alienTimer);
             alienTimer = setInterval(function () {
               takeRStep();
-
+              dis_Measure();
               alien.style.left = parseInt(alien.style.left) + 1 + "px";
-            }, 100);
+            }, 10);
+          }
+          // AlienMoveLeft//
+          function AlienGoLeft() {
+            clearInterval(alienTimer);
+            alienTimer = setInterval(function () {
+              takeLStep();
+              dis_Measure();
+              alien.style.left = parseInt(alien.style.left) - 1 + "px";
+            }, 10);
+          }
+          // show moviing step start//
+          function takeRStep() {
+            stepNumber++;
+            if (stepNumber >= 30) {
+              stepNumber = 0;
+            }
+            alien.src = "alien/alienrwalk" + stepNumber + ".gif";
+          }
+          function takeLStep() {
+            stepNumber++;
+            if (stepNumber >= 30) {
+              stepNumber = 0;
+            }
+            alien.src = "alien/alienlwalk" + stepNumber + ".gif";
+          }
+          //check the distance between alien with wall//
+          function dis_Measure() {
+            if (alien.style.left === "0px") {
+              AlienGoRight();
+            } else if (alien.style.left === "1200px") {
+              AlienGoLeft();
+            }
           }
         }
-
-
-
-
-
-
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        else if (myTextbox.value.toLowerCase() == "stop") {
+          clearInterval(alienTimer);
+        }
+        else if (myTextbox.value.toLowerCase() == "bye") {
+          clearInterval(alienTimer);
+          alien = document.getElementById("a");
+          alien.style.display= "none"
+        }
       }
-
-      
     }
 
     onload = magicbox;
