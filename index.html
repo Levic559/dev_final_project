@@ -8,6 +8,8 @@
   </head>
   <script src="jquery-3.6.0.min.js"></script>
   <script>
+    //Levi Chen A01213670 
+    //Parrner: Adrian   A01028387
     function magicbox() {
       // create an input box//
       let myTextbox = document.createElement("input");
@@ -30,17 +32,22 @@
       alienTimer = null;
       stepNumber = 0;
       alien = document.getElementById("a");
+      byeByemylink = document.getElementById("link");
       // set conditions to trigger the function//
       function project() {
         // show the link of storage//
         if (myTextbox.value.toLowerCase() == "storage") {
-          var settag = document.createElement("a");
+          limitation()
+          var settagA = document.createElement("a");
+          settagA.id="link";
           var linktext = document.createTextNode("storage.html");
-          settag.setAttribute("href", "storage.html");
-          settag.appendChild(linktext);
-          document.body.appendChild(settag);
+          settagA.setAttribute("href", "storage.html");
+          settagA.appendChild(linktext);
+          document.body.appendChild(settagA);
+          
           // show a stative alien//
         } else if (myTextbox.value.toLowerCase() == "alien") {
+          limitation()
           var alien = document.createElement("img");
           alien.id = "a";
           alien.src = "alien/alienrwalk0.gif";
@@ -183,7 +190,18 @@
             });
           });
 
-
+        }
+       
+       //set limitation of item//
+        function limitation(){
+        var byeByemylink = document.getElementById("link");
+        var alien = document.getElementById("a");
+          console.log(byeByemylink);
+          console.log(alien);
+          if (byeByemylink != null || alien != null) {
+            byeByemylink.remove();
+            alien.remove();
+          }
         }
       }
     }
