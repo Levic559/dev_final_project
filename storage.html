@@ -16,99 +16,103 @@
       myH1.appendChild(mywelcometext);
       document.body.appendChild(myH1);
       document.body.appendChild(document.createElement("br"));
-     
+
       let myTextbox = document.createElement("input");
       myTextbox.type = "text";
-      myTextbox.placeholder ="Name/Gender/Age"
+      myTextbox.placeholder = "Name/Gender/Age";
       myTextbox.id = "inpkey";
-      myTextbox.style.width="300px";
+      myTextbox.style.width = "300px";
       document.body.appendChild(myTextbox);
-     
+
       let myButton = document.createElement("input");
       myButton.type = "button";
       myButton.id = "SaveData";
-      myButton.style.height="60px";
-      myButton.style.position="absolute";
-      myButton.style.marginLeft="30px";
+      myButton.style.height = "60px";
+      myButton.style.position = "absolute";
+      myButton.style.marginLeft = "30px";
       myButton.value = "SaveData";
       document.body.appendChild(myButton);
+      
+
+
+      let myButton2 = document.createElement("input");
+      myButton2.type = "button";
+      myButton2.id = "ClearAll";
+      myButton2.style.height = "60px";
+      myButton2.style.position = "absolute";
+      myButton2.style.marginLeft = "120px";
+      myButton2.value = "ClearAll";
+      document.body.appendChild(myButton2);
       document.body.appendChild(document.createElement("br"));
       document.body.appendChild(document.createElement("br"));
 
       let myTextbox2 = document.createElement("input");
       myTextbox2.type = "text";
-      myTextbox2.placeholder ="Mike/Male/35"
+      myTextbox2.placeholder = "Mike/Male/35";
       myTextbox2.id = "inpvalue";
-      myTextbox2.style.width="300px";
+      myTextbox2.style.width = "300px";
       document.body.appendChild(myTextbox2);
       document.body.appendChild(document.createElement("br"));
-      
-      
-  
-
-      
-      
-     
 
       var myH5 = document.createElement("h5");
-      var mytext = document.createTextNode(
-        "LocalStorage"
-      );
+      var mytext = document.createTextNode("LocalStorage");
       myH5.appendChild(mytext);
-      myH5.style.marginBottom="5px";
+      myH5.style.marginBottom = "5px";
       document.body.appendChild(myH5);
 
       let myTextbox3 = document.createElement("div");
       myTextbox3.id = "myStorage";
-      myTextbox3.style.height=300;
-      myTextbox3.style.backgroundColor="pink";
+      myTextbox3.style.height = 300;
+      myTextbox3.style.backgroundColor = "pink";
       document.body.appendChild(myTextbox3);
 
+      const inpkey = document.getElementById("inpkey");
+      const inpvalue = document.getElementById("inpvalue");
+      const SaveData = document.getElementById("SaveData");
+      const ClearAll = document.getElementById("ClearAll");
+      const myStorage = document.getElementById("myStorage");
 
-
-     const inpkey =document.getElementById("inpkey")
-     const inpvalue =document.getElementById("inpvalue")
-     const SaveData =document.getElementById("SaveData")
-     const myStorage =document.getElementById("myStorage")
-
-
-
-      SaveData.onclick = function(){
-       
+      SaveData.onclick = function () {
         const key = inpkey.value;
-        const  value = inpvalue.value;
+        const value = inpvalue.value;
+
+        // console.log(title)
+        // console.log(data)
        
-
-        // console.log(title)  
-        // console.log(data)  
-        
-
-        if (key && value ){
+       
+        if (key && value) {
           localStorage.setItem(key, value);
-          location.reload()
+          location.reload();
         }
         
-
-      
-      }
-      for (let i=0; i < localStorage.length; i++){
-        const key = localStorage.key(i);
-        const value =localStorage.getItem(key);
-        
-        myStorage.innerHTML +=`${key}:${value} <br/>`;
-
       };
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+
+        myStorage.innerHTML += `${key}:${value} <br/>`;
+
+        
+      }
+
+      ClearAll.onclick = function () {
+        localStorage.clear();
+        location.reload();
+
+      }
+
+      // $("#clearAll").click(function(){
+      //       localStorage.clear()
+            
+      //   })
+
 
     });
   </script>
   <body>
-
-
     <!-- <filedset>
       <div id="mystorage2"></div>
 
     </filedset> -->
-
-
   </body>
 </html>
