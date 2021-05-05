@@ -11,7 +11,7 @@
     $(function () {
       var myH1 = document.createElement("h1");
       var mywelcometext = document.createTextNode(
-        "Welcome to Localstorage Demo!"
+        "Welcome to LocalStorage Demo!"
       );
       myH1.appendChild(mywelcometext);
       document.body.appendChild(myH1);
@@ -21,13 +21,25 @@
       myTextbox.type = "text";
       myTextbox.placeholder ="Name/Gender/Age"
       myTextbox.id = "inpkey";
+      myTextbox.style.width="300px";
       document.body.appendChild(myTextbox);
-      document.body.appendChild(document.createElement("br"));
      
+      let myButton = document.createElement("input");
+      myButton.type = "button";
+      myButton.id = "SaveData";
+      myButton.style.height="60px";
+      myButton.style.position="absolute";
+      myButton.style.marginLeft="30px";
+      myButton.value = "SaveData";
+      document.body.appendChild(myButton);
+      document.body.appendChild(document.createElement("br"));
+      document.body.appendChild(document.createElement("br"));
+
       let myTextbox2 = document.createElement("input");
       myTextbox2.type = "text";
       myTextbox2.placeholder ="Mike/Male/35"
       myTextbox2.id = "inpvalue";
+      myTextbox2.style.width="300px";
       document.body.appendChild(myTextbox2);
       document.body.appendChild(document.createElement("br"));
       
@@ -35,20 +47,19 @@
   
 
       
-      document.body.appendChild(document.createElement("br"));
-      document.body.appendChild(document.createElement("br"));
-      let myButton = document.createElement("input");
-      myButton.type = "button";
-      myButton.id = "SaveData";
-      myButton.value = "SaveData";
-      document.body.appendChild(myButton);
-      document.body.appendChild(document.createElement("br"));
-      document.body.appendChild(document.createElement("br"));
+      
+     
+
+      var myH5 = document.createElement("h5");
+      var mytext = document.createTextNode(
+        "LocalStorage"
+      );
+      myH5.appendChild(mytext);
+      myH5.style.marginBottom="5px";
+      document.body.appendChild(myH5);
 
       let myTextbox3 = document.createElement("div");
-      
       myTextbox3.id = "myStorage";
-      myTextbox3.style.width=300;
       myTextbox3.style.height=300;
       myTextbox3.style.backgroundColor="pink";
       document.body.appendChild(myTextbox3);
