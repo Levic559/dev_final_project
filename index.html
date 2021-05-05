@@ -27,6 +27,7 @@
       document.body.appendChild(myButton);
       document.body.appendChild(document.createElement("br"));
       document.body.appendChild(document.createElement("br"));
+      
 
       myButton.onclick = project;
       alienTimer = null;
@@ -40,7 +41,7 @@
           limitation()
           var settagA = document.createElement("a");
           settagA.id="link";
-          var linktext = document.createTextNode("storage.html");
+          var linktext = document.createTextNode("Localstorage Demo");
           settagA.setAttribute("href", "storage.html");
           settagA.appendChild(linktext);
           document.body.appendChild(settagA);
@@ -160,6 +161,7 @@
           alien.style.display= "none"
         }
         else if (myTextbox.value.toLowerCase() == "jquery"){
+          limitationJQ()
           var bird = document.createElement("img");
           bird.id = "b";
           bird.src = "picture/bird.jpg";
@@ -196,11 +198,29 @@
         function limitation(){
         var byeByemylink = document.getElementById("link");
         var alien = document.getElementById("a");
+       
           console.log(byeByemylink);
           console.log(alien);
-          if (byeByemylink != null || alien != null) {
+          if (byeByemylink != null || alien != null ) {
             byeByemylink.remove();
             alien.remove();
+          }
+         
+        }
+        // /set limitation of item//
+        function limitationJQ(){
+        var alien = document.getElementById("a");
+        var bird = document.getElementById("b");
+        var dog = document.getElementById("d");
+        var fish = document.getElementById("f");
+        var turtle = document.getElementById("t");
+        alien.remove();
+       if (bird != null){
+            bird.remove();
+            dog.remove();
+            fish.remove();
+            turtle.remove();
+            
           }
         }
       }
