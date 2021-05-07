@@ -146,8 +146,10 @@
           //check the distance between alien with wall//
           function dis_Measure() {
             if (alien.style.left == "0px") {
+              clearInterval(alienTimer);
               AlienGoRight();
             } else if (alien.style.left == "300px") {
+              clearInterval(alienTimer);
               AlienGoLeft();
             }
           }
