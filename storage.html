@@ -32,8 +32,6 @@
       myButton.style.marginLeft = "30px";
       myButton.value = "SaveData";
       document.body.appendChild(myButton);
-      
-
 
       let myButton2 = document.createElement("input");
       myButton2.type = "button";
@@ -69,44 +67,38 @@
       const inpkey = document.getElementById("inpkey");
       const inpvalue = document.getElementById("inpvalue");
       const SaveData = document.getElementById("SaveData");
-      const ClearAll = document.getElementById("ClearAll");
+      // const ClearAll = document.getElementById("ClearAll");
       const myStorage = document.getElementById("myStorage");
 
       SaveData.onclick = function () {
         const key = inpkey.value;
         const value = inpvalue.value;
 
-        // console.log(title)
+        // console.log(key)
         // console.log(data)
-       
-       
+
         if (key && value) {
           localStorage.setItem(key, value);
           location.reload();
         }
-        
       };
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         const value = localStorage.getItem(key);
 
         myStorage.innerHTML += `${key}:${value} <br/>`;
-
-        
       }
 
-      ClearAll.onclick = function () {
+      // ClearAll.onclick = function () {
+      //   localStorage.clear();
+      //   location.reload();
+
+      // }
+
+      $("#ClearAll").click(function () {
         localStorage.clear();
         location.reload();
-
-      }
-
-      // $("#clearAll").click(function(){
-      //       localStorage.clear()
-            
-      //   })
-
-
+      });
     });
   </script>
   <body>
