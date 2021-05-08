@@ -1,1 +1,1 @@
-["Don't", "be", "afraid", "to", "take", "risks", "and", "fail" ]
+["Don't", "be", "afraid", "to", "take", "risks", "and", "fail." ]

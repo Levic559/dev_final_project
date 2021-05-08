@@ -19,12 +19,23 @@
         {
             if (request.readyState == 4)
             {
-
+                var object = request.responseText
                 
+                var array = JSON.parse(object)
 
+                var advice = ""
 
+                for (let i = 0; i < array.length; i++)
+                {
+                    advice = advice + array[i] + " "
+                }
 
-                console.log(request.responseText)
+                var myH1 = document.createElement("h1")
+                var text = document.createTextNode(advice.toUpperCase())
+
+                myH1.appendChild(text)
+                document.body.appendChild(myH1)
+
             }
 
         }
