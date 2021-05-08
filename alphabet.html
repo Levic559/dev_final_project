@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Alphabet
+        </title>
+    </head>
+
+    <body></body>
+    <script>
+        for (let i = "z".charCodeAt(0); i >= 'a'.charCodeAt(0); i--)
+        {
+            var img = document.createElement("img")
+            img.src = "alphabet/" + String.fromCharCode(i) + ".png"
+            img.id = String.fromCharCode(i)
+            img.style.width = "40px"
+            document.body.appendChild(img)
+            img.onclick=replace
+        }
+
+        
+
+        function replace()
+        {
+
+            let imgs = document.getElementsByTagName("img")
+
+            for (i = 0; i < imgs.length;i++)
+            {
+                imgs[i].src = this.src
+            }
+        }
+
+
+    </script>
+</html>
