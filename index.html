@@ -29,6 +29,10 @@
       document.body.appendChild(myButton);
       document.body.appendChild(document.createElement("br"));
       document.body.appendChild(document.createElement("br"));
+
+      let allDiv = document.createElement("div");
+      allDiv.id = "all";
+      document.body.appendChild(allDiv);
       
 
       myButton.onclick = project;
@@ -40,17 +44,88 @@
       function project() {
         // show the link of storage//
         if (myTextbox.value.toLowerCase() == "storage") {
-          limitation()
+          //limitation()
+          limitationAll()
           var settagA = document.createElement("a");
           settagA.id="link";
           var linktext = document.createTextNode("Localstorage Demo");
           settagA.setAttribute("href", "storage.html");
           settagA.appendChild(linktext);
-          document.body.appendChild(settagA);
+          document.getElementById("all").appendChild(settagA);
           
-          // show a stative alien//
-        } else if (myTextbox.value.toLowerCase() == "alien") {
-          limitation()
+  
+        } // ajax //
+        else if (myTextbox.value.toLowerCase() == "ajax") {
+        limitationAll()
+        var request = new XMLHttpRequest()
+        
+        request.open("GET", "advice.txt", true)
+
+        request.onreadystatechange=function()
+        {
+            if (request.readyState == 4)
+            {
+                var object = request.responseText
+                
+                var array = JSON.parse(object)
+
+                var advice = ""
+
+                for (let i = 0; i < array.length; i++)
+                {
+                    advice = advice + array[i] + " "
+                }
+
+                var myH1 = document.createElement("h1")
+                var text = document.createTextNode(advice.toUpperCase())
+
+                myH1.appendChild(text)
+                document.getElementById("all").appendChild(myH1)
+
+            }
+        }
+        request.send(null)
+        }
+        // plugin //
+        else if (myTextbox.value.toLowerCase() == "plugin") {
+          //limitation()
+          limitationAll()
+          var settagA = document.createElement("a");
+          settagA.id="link";
+          var linktext = document.createTextNode("Plugin Demo");
+          settagA.setAttribute("href", "plugin.html");
+          settagA.appendChild(linktext);
+          document.getElementById("all").appendChild(settagA);
+        }
+        // alphabet //
+        else if (myTextbox.value.toLowerCase() == "alphabet") {
+          limitationAll()
+            for (let i = "z".charCodeAt(0); i >= 'a'.charCodeAt(0); i--)
+            {
+              var img = document.createElement("img")
+              img.src = "alphabet/" + String.fromCharCode(i) + ".png"
+              img.id = String.fromCharCode(i)
+              img.style.width = "40px"
+              document.getElementById("all").appendChild(img)
+              img.onclick=replace
+            }
+
+          function replace()
+          {
+              let imgs = document.getElementsByTagName("img")
+
+              for (i = 0; i < imgs.length;i++)
+              {
+                  imgs[i].src = this.src
+              }
+          }
+        }
+
+
+        // show a stative alien//
+        else if (myTextbox.value.toLowerCase() == "alien") {
+          //limitation()
+          limitationAll()
           var alien = document.createElement("img");
           alien.id = "a";
           alien.src = "alien/alienrwalk0.gif";
@@ -58,7 +133,7 @@
           alien.style.position = "absolute";
           alien.style.top = "150px";
           alien.style.left = "50px";
-          document.body.appendChild(alien);
+          document.getElementById("all").appendChild(alien);
           // show a walked alien//
         } else if (myTextbox.value.toLowerCase() == "walk") {
           alien = document.getElementById("a");
@@ -227,6 +302,29 @@
             
           }
         }
+
+        function limitationA(){
+        var myA = document.getElementById("h1");
+        var alien = document.getElementById("a");
+        var bird = document.getElementById("b");
+        var dog = document.getElementById("d");
+        var fish = document.getElementById("f");
+        var turtle = document.getElementById("t");
+        alien.remove();
+       if (myA != null){
+            bird.remove();
+            dog.remove();
+            fish.remove();
+            turtle.remove();
+          }
+        }
+      }
+    }
+
+    function limitationAll () {
+      const myNode = document.getElementById("all");
+      while (myNode.firstChild) {
+      myNode.removeChild(myNode.lastChild);
       }
     }
     
