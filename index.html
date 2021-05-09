@@ -240,27 +240,27 @@
           alien.style.display= "none"
         }
         else if (myTextbox.value.toLowerCase() == "jquery"){
-          limitationJQ()
+          limitationAll()
           var bird = document.createElement("img");
           bird.id = "b";
           bird.src = "picture/bird.jpg";
           bird.style.top = "150px";
-          document.body.appendChild(bird);
+          document.getElementById("all").appendChild(bird);
           var dog = document.createElement("img");
           dog.id = "d";
           dog.src = "picture/dog.jpg";
           dog.style.top = "150px";
-          document.body.appendChild(dog);
+          document.getElementById("all").appendChild(dog);
           var fish = document.createElement("img");
           fish.id = "f";
           fish.src = "picture/fish.jpg";
           fish.style.top = "150px";
-          document.body.appendChild(fish);
+          document.getElementById("all").appendChild(fish);
           var turtle = document.createElement("img");
           turtle.id = "t";
           turtle.src = "picture/turtle.jpg";
           turtle.style.top = "150px";
-          document.body.appendChild(turtle);
+          document.getElementById("all").appendChild(turtle);
           $(function(){   
                 $("img").attr("width", 200)
 
